@@ -1,0 +1,56 @@
+* { /* Zerar propriedades gerais*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;/*faz com que o navegador passe a considerar a altura e largura do elemento contando o ´padding´ e o ´border´ do mesmo*/
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-color:rgb(127, 228, 228);
+}
+
+.memory-game {
+    height: 640px;
+    width: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; /*Faz a quebra de linha nos elementos*/
+    perspective: 1000px; /* Efeito 3D */
+}
+
+.card {
+    height: calc(33.333% - 10px);
+    width: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(1, 1, 1, .3);
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d;/*Não deixa ascartas ficarem achatadas(2D) no plano*/
+    transition: transform .9s;
+}
+
+.card:active {
+    transform: scale(.97);
+    transition: transform .3s;    
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute; /*Deixa as imagens back sobre a front*/
+    border-radius: 5px;
+    background: white;
+    backface-visibility: hidden;/*Retira o verso do elemento*/
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
